@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" th:href="@{/blog.css}">
+</head>
+<body>
+<div class="container">
+    <h1 class="title">Välkommen till min Blogg</h1>
+    <div th:each="movierating : ${movieRatingList}">
+        <h2 th:text="${movierating.getTitle()}"></h2>
+        <p th:text="${movierating.getRating()}"></p>
+        <button th:data-id="${movierating.getId()}" th:onclick="handleDelete(this.getAttribute('data-id'))">Delete </button>
+        <hr />
+    </div>
+    <br>
+    <a th:href="@{/movie/addmovie}"><button>Write MovieReview</button></a>
+
+</div>
+<script type="text/javascript" th:src="@{/movie.js}"></script>
+</body>
+</html>
